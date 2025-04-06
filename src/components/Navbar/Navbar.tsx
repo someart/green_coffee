@@ -6,7 +6,7 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-white bg-opacity-90 backdrop-blur-lg rounded-full p-4 shadow-lg flex items-center justify-between gap-4 z-50">
+    <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-blur bg-opacity-90 backdrop-blur-lg rounded-full px-4 shadow-lg flex items-center justify-between gap-4 z-50">
       <div className="flex items-center">
         <Image
           src="/Logo/Logo.png" // Path to your logo image
