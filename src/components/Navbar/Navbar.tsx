@@ -16,20 +16,37 @@ export function Navbar() {
           className="object-contain" // Optional: to maintain aspect ratio
         />
       </div>
-      <div className={`flex-col md:flex md:flex-row md:space-x-4 items-center ${isOpen ? 'flex' : 'hidden'} md:block`}>
-        <Link href="/" className="nav-item px-3 py-2 rounded-full hover:bg-gray-200 transition">
+      <div
+        className={`flex-col md:flex md:flex-row md:space-x-4 items-center ${isOpen ? 'flex' : 'hidden'} md:block`}
+      >
+        <Link
+          href="/"
+          className="nav-item px-3 py-2 rounded-full hover:bg-gray-200 transition"
+        >
           <span className="font-bold text-gray-800">Home</span>
         </Link>
-        <Link href="/about" className="nav-item px-3 py-2 rounded-full hover:bg-gray-200 transition">
+        <Link
+          href="/about"
+          className="nav-item px-3 py-2 rounded-full hover:bg-gray-200 transition"
+        >
           <span className="font-bold text-gray-800">About Us</span>
         </Link>
-        <Link href="/services" className="nav-item px-3 py-2 rounded-full hover:bg-gray-200 transition">
+        <Link
+          href="/services"
+          className="nav-item px-3 py-2 rounded-full hover:bg-gray-200 transition"
+        >
           <span className="font-bold text-gray-800">Services</span>
         </Link>
-        <Link href="/store" className="nav-item px-3 py-2 rounded-full hover:bg-gray-200 transition">
+        <Link
+          href="/store"
+          className="nav-item px-3 py-2 rounded-full hover:bg-gray-200 transition"
+        >
           <span className="font-bold text-gray-800">Store</span>
         </Link>
-        <Link href="/contact" className="nav-item px-3 py-2 rounded-full hover:bg-gray-200 transition">
+        <Link
+          href="/contact"
+          className="nav-item px-3 py-2 rounded-full hover:bg-gray-200 transition"
+        >
           <span className="font-bold text-gray-800">Contact Us</span>
         </Link>
       </div>
@@ -54,7 +71,10 @@ export function Navbar() {
         </button>
       </div>
       <div className="hidden md:flex items-center">
-        <Link href="/search" className="p-2 rounded-full hover:bg-gray-200 transition">
+        <Link
+          href="/search"
+          className="p-2 rounded-full hover:bg-gray-200 transition"
+        >
           <svg
             className="w-6 h-6 text-gray-800"
             fill="none"
@@ -65,7 +85,10 @@ export function Navbar() {
             <line x1="16.5" y1="16.5" x2="21" y2="21" />
           </svg>
         </Link>
-        <Link href="/cart" className="p-2 rounded-full hover:bg-gray-200 transition">
+        <Link
+          href="/cart"
+          className="p-2 rounded-full hover:bg-gray-200 transition"
+        >
           <svg
             className="w-6 h-6 text-gray-800"
             fill="none"
