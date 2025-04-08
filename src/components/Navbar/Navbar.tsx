@@ -21,31 +21,31 @@ export function Navbar() {
       >
         <Link
           href="/"
-          className="nav-item px-3 py-2 rounded-full hover:bg-gray-200 transition"
+          className="nav-item px-3 py-2 rounded-full hover:bg-amber-700 transition"
         >
           <span className="font-bold text-gray-800">Home</span>
         </Link>
         <Link
           href="/about"
-          className="nav-item px-3 py-2 rounded-full hover:bg-gray-200 transition"
+          className="nav-item px-3 py-2 rounded-full hover:bg-amber-700 transition"
         >
           <span className="font-bold text-gray-800">About Us</span>
         </Link>
         <Link
           href="/services"
-          className="nav-item px-3 py-2 rounded-full hover:bg-gray-200 transition"
+          className="nav-item px-3 py-2 rounded-full hover:bg-amber-700 transition"
         >
           <span className="font-bold text-gray-800">Services</span>
         </Link>
         <Link
           href="/store"
-          className="nav-item px-3 py-2 rounded-full hover:bg-gray-200 transition"
+          className="nav-item px-3 py-2 rounded-full hover:bg-amber-700 transition"
         >
           <span className="font-bold text-gray-800">Store</span>
         </Link>
         <Link
           href="/contact"
-          className="nav-item px-3 py-2 rounded-full hover:bg-gray-200 transition"
+          className="nav-item px-3 py-2 rounded-full hover:bg-amber-700 transition"
         >
           <span className="font-bold text-gray-800">Contact Us</span>
         </Link>
@@ -73,7 +73,7 @@ export function Navbar() {
       <div className="hidden md:flex items-center">
         <Link
           href="/search"
-          className="p-2 rounded-full hover:bg-gray-200 transition"
+          className="p-2 rounded-full hover:bg-amber-700 transition"
         >
           <svg
             className="w-6 h-6 text-gray-800"
@@ -87,7 +87,7 @@ export function Navbar() {
         </Link>
         <Link
           href="/cart"
-          className="p-2 rounded-full hover:bg-gray-200 transition"
+          className="p-2 rounded-full hover:bg-amber-700 transition"
         >
           <svg
             className="w-6 h-6 text-gray-800"
