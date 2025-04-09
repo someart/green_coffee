@@ -21,7 +21,7 @@ export function Header() {
         <h3 className="mt-2 text-2xl font-semibold">Make your day great with our special coffee!</h3>
         <p className="mt-4 max-w-md mx-auto">Welcome to our coffee paradise, where every bean tells a story and every cup sparks joy.</p>
         <div className="flex flex-col md:flex-row gap-4 mt-6 justify-center">
-		<a href="#contact" className=" bg-white text-amber-950 text-3xl px-6 py-2 rounded-full hover:bg-transparent hover:text-primary-color">Contact Us</a>
+		<a href="#contact" className=" bg-blur text-amber-950 text-3xl px-6 py-2 rounded-full bg-blur bg-opacity-90 hover:bg-white hover:text-primary-color">Contact Us</a>
 		</div>
       </div>
     </section>
