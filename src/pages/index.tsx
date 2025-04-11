@@ -1,10 +1,10 @@
 import React from 'react';
-import { Header } from '../components'; 
+import { Header, Introduction } from '../components'; 
 
 const Home = () => (
-  <div className="flex items-center justify-center h-screen">
+  <div className="flex justify-between min-h-screen flex-col relative overflow-hidden">
     <Header />
-    
+    <Introduction />
   </div>
 );
 
