@@ -1,5 +1,5 @@
 import '../styles/globals.css';
-import { Navbar, Footer, DraggableNav, Chatbot } from '../components'; // Ensure these paths are correct
+import { Navbar, Footer, Chatbot } from '../components'; // Ensure these paths are correct
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 
@@ -13,7 +13,6 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
       </Head>
       <Navbar />
-      <DraggableNav />
       <Component {...pageProps} />
       <Chatbot />
       <Footer />
