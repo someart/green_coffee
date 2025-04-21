@@ -3,3 +3,4 @@ export { Footer } from './Footer/Footer';
 export { Header } from './Home/Header';
 export { Introduction } from './Home/Introduction';
 export { Chatbot } from './Chatbot/Chatbot';
+export { Carousel } from './Home/NewProducts';
