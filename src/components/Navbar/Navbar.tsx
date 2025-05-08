@@ -38,13 +38,13 @@ export function Navbar() {
           <span className="font-bold text-gray-800">Services</span>
         </Link>
         <Link
-          href="/store"
+          href="/Store"
           className="nav-item px-3 py-2 rounded-full hover:bg-amber-700 transition"
         >
           <span className="font-bold text-gray-800">Store</span>
         </Link>
         <Link
-          href="/contact"
+          href="/Contact"
           className="nav-item px-3 py-2 rounded-full hover:bg-amber-700 transition"
         >
           <span className="font-bold text-gray-800">Contact</span>

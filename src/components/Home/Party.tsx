@@ -31,7 +31,7 @@ export function Party() {
           {/* Store Button */}
           <div className="text-center p-4 my-4">
             <a
-              href="/store"
+              href="/Store"
               className="btn btn-primary bg-black p-4  rounded-4xl text-white"
             >
               Book Now
