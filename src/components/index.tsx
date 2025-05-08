@@ -5,3 +5,5 @@ export { Introduction } from './Home/Introduction';
 export { Chatbot } from './Chatbot/Chatbot';
 export { Carousel } from './Home/NewProducts';
 export { Party } from './Home/Party';
+export { ProductCard } from './Store/ProductCard';
+export { SidebarFilter } from './Store/SidebarFilter';

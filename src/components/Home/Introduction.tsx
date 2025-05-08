@@ -24,10 +24,16 @@ export function Introduction() {
           </div>
           {/* Text Content */}
           <div className="flex flex-col justify-center items-center text-center lg:text-left">
-			<p className="text-gray-800 text-[20px] font-normal leading-normal" style={{ fontFamily: 'Poppins' }}>
-              At GREEN Coffee Shop, we take immense pride in crafting each cup of coffee with passion and precision. Our skilled baristas curate a diverse selection of specialty coffees sourced from the finest beans across the globe, ensuring every sip transports you to a world of unparalleled taste and bliss.
+            <p
+              className="text-gray-800 text-[20px] font-normal leading-normal"
+              style={{ fontFamily: 'Poppins' }}
+            >
+              At GREEN Coffee Shop, we take immense pride in crafting each cup
+              of coffee with passion and precision. Our skilled baristas curate
+              a diverse selection of specialty coffees sourced from the finest
+              beans across the globe, ensuring every sip transports you to a
+              world of unparalleled taste and bliss.
             </p>
-          
           </div>
         </div>
       </section>

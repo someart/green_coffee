@@ -16,18 +16,23 @@ const Contact = () => {
             <div className="mb-12 w-full lg:w-5/12 lg:mb-0 lg:px-6">
               <form>
                 <InputField id="name" label="Name" type="text" required />
-                <InputField id="email" label="Email address" type="email" required />
+                <InputField
+                  id="email"
+                  label="Email address"
+                  type="email"
+                  required
+                />
                 <TextareaField id="message" label="Message" required />
                 <div className="mb-6 flex items-center">
                   <input type="checkbox" id="copy" className="mr-2" />
                   <label htmlFor="copy">Send me a copy of this message</label>
                 </div>
                 <button
-  type="submit"
-  className="w-full rounded bg-amber-900 text-white px-6 py-2 text-xs font-medium uppercase hover:bg-amber-800 transition cursor-pointer"
->
-  Send
-</button>
+                  type="submit"
+                  className="w-full rounded bg-amber-900 text-white px-6 py-2 text-xs font-medium uppercase hover:bg-amber-800 transition cursor-pointer"
+                >
+                  Send
+                </button>
               </form>
             </div>
             <div className="w-full lg:w-7/12">
@@ -47,7 +52,12 @@ interface InputFieldProps {
   required: boolean;
 }
 
-const InputField: React.FC<InputFieldProps> = ({ id, label, type, required }) => (
+const InputField: React.FC<InputFieldProps> = ({
+  id,
+  label,
+  type,
+  required,
+}) => (
   <div className="relative mb-6">
     <input
       type={type}
@@ -70,7 +80,11 @@ interface TextareaFieldProps {
   required: boolean;
 }
 
-const TextareaField: React.FC<TextareaFieldProps> = ({ id, label, required }) => (
+const TextareaField: React.FC<TextareaFieldProps> = ({
+  id,
+  label,
+  required,
+}) => (
   <div className="relative mb-6">
     <textarea
       id={id}
@@ -112,11 +126,7 @@ const ContactInfo = () => (
       title="Technical Support"
       info="example@gmail.com"
     />
-    <ContactDetail
-      icon="🏠"
-      title="Address"
-      info="abcd, xyz"
-    />
+    <ContactDetail icon="🏠" title="Address" info="abcd, xyz" />
   </div>
 );
 
