@@ -32,6 +32,7 @@ export function ProductCard({
         <div className="text-xs text-gray-400">
           ⭐ {rating} | {sold} sold
         </div>
+		
       </div>
     </div>
   );

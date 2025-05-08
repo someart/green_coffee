@@ -29,7 +29,7 @@ export function Navbar() {
           href="/about"
           className="nav-item px-3 py-2 rounded-full hover:bg-amber-700 transition"
         >
-          <span className="font-bold text-gray-800">About Us</span>
+          <span className="font-bold text-gray-800">About</span>
         </Link>
         <Link
           href="/services"
@@ -47,7 +47,7 @@ export function Navbar() {
           href="/contact"
           className="nav-item px-3 py-2 rounded-full hover:bg-amber-700 transition"
         >
-          <span className="font-bold text-gray-800">Contact Us</span>
+          <span className="font-bold text-gray-800">Contact</span>
         </Link>
       </div>
       <div className="flex items-center md:hidden">
