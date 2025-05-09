@@ -1,41 +1,45 @@
-// pages/cart.tsx
-import { useState } from 'react';
-import {
-  FaShoppingCart,
-  FaTrash,
-  FaPlus,
-  FaMinus,
-  FaEdit,
-  FaChevronDown,
-  FaChevronUp,
-} from 'react-icons/fa';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { FaShoppingCart, FaTrash, FaPlus, FaMinus } from 'react-icons/fa';
 
 interface CartItem {
-  name: string;
-  model: string;
-  image?: string;
-  hsCode: string;
-  color: string;
+  title: string;
+  price: number;
+  size: string;
+  service: string;
+  image: string;
   quantity: number;
-  weight: number;
-  deliveryMethod: string;
-  perPieceRate: number;
-  totalPrice: number;
-  description: string;
-  showDescription: boolean;
-  isEditingDescription: boolean;
 }
 
 export default function CartPage() {
+  const router = useRouter();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [shippingMethod, setShippingMethod] = useState('standard');
 
-  // Example utility functions
+  // Load cart from localStorage on mount
+  useEffect(() => {
+    try {
+      const storedCart = localStorage.getItem('cart');
+      console.log('Stored cart:', storedCart); // Debug
+      if (storedCart) {
+        setCartItems(JSON.parse(storedCart));
+      }
+    } catch (error) {
+      console.error('Error loading cart from localStorage:', error);
+    }
+  }, []);
+
+  // Save cart to localStorage whenever it changes
+  useEffect(() => {
+    try {
+      localStorage.setItem('cart', JSON.stringify(cartItems));
+    } catch (error) {
+      console.error('Error saving cart to localStorage:', error);
+    }
+  }, [cartItems]);
+
   const incrementQuantity = (index: number) => {
     const updated = [...cartItems];
     updated[index].quantity += 1;
-    updated[index].totalPrice =
-      updated[index].quantity * updated[index].perPieceRate;
     setCartItems(updated);
   };
 
@@ -43,21 +47,18 @@ export default function CartPage() {
     const updated = [...cartItems];
     if (updated[index].quantity > 1) {
       updated[index].quantity -= 1;
-      updated[index].totalPrice =
-        updated[index].quantity * updated[index].perPieceRate;
       setCartItems(updated);
     }
   };
 
-  const getColorHex = (color: string) => {
-    const map: Record<string, string> = {
-      Black: '#000',
-      Silver: '#C0C0C0',
-      Blue: '#00f',
-      Red: '#f00',
-      White: '#fff',
-    };
-    return map[color] || '#000';
+  const removeItem = (index: number) => {
+    const updated = [...cartItems];
+    updated.splice(index, 1);
+    setCartItems(updated);
+  };
+
+  const handleCheckout = () => {
+    router.push('/checkout');
   };
 
   return (
@@ -71,21 +72,82 @@ export default function CartPage() {
         </div>
       </div>
 
-      {/* Empty Cart */}
-      {cartItems.length === 0 && (
+      {cartItems.length === 0 ? (
         <div className="bg-white rounded-lg shadow-md p-6 text-center">
           <FaShoppingCart className="text-gray-300 text-5xl mb-4 mx-auto" />
           <p className="text-xl text-gray-500">Your cart is empty</p>
           <a
-            href="#"
+            href="/product/espresso-ice-coffee"
             className="inline-block mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition"
           >
             Continue Shopping
           </a>
         </div>
+      ) : (
+        <div className="space-y-4">
+          {cartItems.map((item, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-lg shadow p-4 flex gap-4"
+            >
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-24 h-24 object-cover rounded"
+              />
+              <div className="flex-1">
+                <h2 className="text-lg font-semibold">{item.title}</h2>
+                <p className="text-sm text-gray-600">
+                  Size: <strong>{item.size}</strong> | Service:{' '}
+                  <strong>{item.service}</strong>
+                </p>
+                <p className="text-green-600 font-semibold text-lg">
+                  ${(item.price * item.quantity).toFixed(2)}
+                </p>
+                <div className="flex items-center gap-2 mt-2">
+                  <button
+                    onClick={() => decrementQuantity(index)}
+                    className="p-1 border rounded"
+                  >
+                    <FaMinus />
+                  </button>
+                  <span>{item.quantity}</span>
+                  <button
+                    onClick={() => incrementQuantity(index)}
+                    className="p-1 border rounded"
+                  >
+                    <FaPlus />
+                  </button>
+                  <button
+                    onClick={() => removeItem(index)}
+                    className="ml-auto text-red-500 hover:text-red-700"
+                  >
+                    <FaTrash />
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+          <div className="bg-white rounded-lg shadow p-4 text-right font-semibold text-xl">
+            Total: $
+            {cartItems
+              .reduce((total, item) => total + item.price * item.quantity, 0)
+              .toFixed(2)}
+          </div>
+          <button
+            onClick={() => setCartItems([])}
+            className="mt-4 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700"
+          >
+            Clear Cart
+          </button>
+          <button
+            onClick={handleCheckout}
+            className="mt-4 bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition"
+          >
+            Checkout
+          </button>
+        </div>
       )}
-
-      {/* Cart items rendering and logic continues... */}
     </div>
   );
 }
