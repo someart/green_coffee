@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { products } from '@/data/products';
 import Image from 'next/image';
@@ -12,11 +12,26 @@ interface CartItem {
   quantity: number;
 }
 
+interface Order {
+  id: string;
+  items: CartItem[];
+  total: number;
+  status: 'Pending';
+  timestamp: number;
+}
+
 export default function ProductPage() {
   const router = useRouter();
   const { slug } = router.query;
   const [selectedSize, setSelectedSize] = useState('');
   const [selectedService, setSelectedService] = useState('');
+  const [cart, setCart] = useState<CartItem[]>([]);
+
+  // Load cart from localStorage on mount
+  useEffect(() => {
+    const savedCart = JSON.parse(localStorage.getItem('cart') || '[]');
+    setCart(savedCart);
+  }, []);
 
   if (!slug || typeof slug !== 'string') return null;
 
@@ -54,8 +69,10 @@ export default function ProductPage() {
       }
 
       localStorage.setItem('cart', JSON.stringify(currentCart));
+      setCart(currentCart); // Update local state
       alert('Added to cart!');
-      router.push('/cart');
+      // Optionally redirect to cart page after adding
+       router.push('/cart');
     } catch (error) {
       console.error('Error saving to localStorage:', error);
       alert('Failed to add to cart. Please try again.');
@@ -63,7 +80,25 @@ export default function ProductPage() {
   };
 
   const handleCheckout = () => {
-    router.push('/cart'); // Redirect to cart page
+    if (cart.length === 0) {
+      alert('Your cart is empty.');
+      return;
+    }
+
+    const newOrder: Order = {
+      id: `ORDER-${Date.now()}`,
+      items: cart,
+      total: cart.reduce((sum, item) => sum + item.price * item.quantity, 0),
+      status: 'Pending',
+      timestamp: Date.now(),
+    };
+
+    const existingOrders = JSON.parse(localStorage.getItem('orders') || '[]');
+    existingOrders.push(newOrder);
+    localStorage.setItem('orders', JSON.stringify(existingOrders));
+    localStorage.removeItem('cart'); // Clear cart after creating order
+    setCart([]); // Clear local cart state
+    router.push('/Checkout'); // Redirect to admin for demo (or a confirmation page in production)
   };
 
   return (

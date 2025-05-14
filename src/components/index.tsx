@@ -7,3 +7,7 @@ export { Carousel } from './Home/NewProducts';
 export { Party } from './Home/Party';
 export { ProductCard } from './Store/ProductCard';
 export { SidebarFilter } from './Store/SidebarFilter';
+export { AdminLogin } from './Admin/AdminLogin';
+export { OrderTable } from './Admin/OrderTable';
+export { ProductModal } from './Admin/ProductModal';
+export { ProductTable } from './Admin/ProductTable';

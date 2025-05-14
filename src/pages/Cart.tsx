@@ -11,6 +11,14 @@ interface CartItem {
   quantity: number;
 }
 
+interface Order {
+  id: string;
+  items: CartItem[];
+  total: number;
+  status: 'Pending';
+  timestamp: number;
+}
+
 export default function CartPage() {
   const router = useRouter();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
@@ -58,7 +66,25 @@ export default function CartPage() {
   };
 
   const handleCheckout = () => {
-    router.push('/checkout');
+    if (cartItems.length === 0) {
+      alert('Your cart is empty.');
+      return;
+    }
+
+    const newOrder: Order = {
+      id: `ORDER-${Date.now()}`,
+      items: cartItems,
+      total: cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0),
+      status: 'Pending',
+      timestamp: Date.now(),
+    };
+
+    const existingOrders = JSON.parse(localStorage.getItem('orders') || '[]');
+    existingOrders.push(newOrder);
+    localStorage.setItem('orders', JSON.stringify(existingOrders));
+    localStorage.removeItem('cart'); // Clear cart
+    setCartItems([]); // Clear local state
+    router.push('/checkout'); // Redirect to checkout page
   };
 
   return (
@@ -140,12 +166,15 @@ export default function CartPage() {
           >
             Clear Cart
           </button>
-          <button
-            onClick={handleCheckout}
-            className="mt-4 bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition"
-          >
-            Checkout
-          </button>
+		  <button
+			onClick={() => {
+			  handleCheckout();
+			  router.push('/checkout');
+			}}
+			className="mt-4 bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition"
+		  >
+			Checkout
+		  </button>
         </div>
       )}
     </div>
