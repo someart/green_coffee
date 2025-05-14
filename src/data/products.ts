@@ -14,20 +14,25 @@ export const products = {
     details: ['Water', 'Sugar', 'Beans (Arabica or Robusta)', 'Ice'],
     category: 'drink',
   },
-  'cappuccino ice-coffee': {
+  'cappuccino': {
     title: 'Cappuccino Ice Coffee',
-    rating: 4.3,
-    reviews: 1500,
-    sold: 3201,
-    price: 12.5,
-    oldPrice: 16.0,
-    discount: 40,
-    sizes: ['S', 'M', 'L'],
-    services: ['Sent with Courier', 'In Place'],
+   rating: 4.7,
+    reviews: 850,
+    sold: 1200,
+    price: 36.0, // Converted from '$36.00' to number
+    oldPrice: 40.0,
+    discount: 10,
+    sizes: ['Small', 'Medium', 'Large'],
+    services: ['Delivered with Care', 'In-Store Pickup'],
     image: '/Cups/Dark.png',
-    description: 'Chilled cappuccino with rich espresso.',
-    details: ['Milk', 'Sugar', 'Arabica Beans', 'Ice'],
-    category: 'drink',
+    description:
+      'A beautiful indoor plant known for its air-purifying qualities and elegant white blooms.',
+    details: [
+      'Low Light Tolerant',
+      'Needs Regular Watering',
+      'Non-Toxic to Pets',
+    ],
+    category: 'Indoor',
   },
   'peace-lily': {
     title: 'Peace Lily',
@@ -50,7 +55,7 @@ export const products = {
     category: 'Indoor',
   },
 
-  'monstera-1': {
+  'monstera': {
     title: 'Monstera',
     rating: 4.8,
     reviews: 950,
@@ -70,7 +75,7 @@ export const products = {
     ],
     category: 'Outdoor',
   },
-  'oak-tree-1': {
+  'oak': {
     title: 'Oak Tree',
     rating: 4.6,
     reviews: 500,
@@ -86,7 +91,7 @@ export const products = {
     details: ['Full Sun', 'Deep Watering', 'Well-Draining Soil'],
     category: 'Outdoor',
   },
-  'cactus-1': {
+  'cactus': {
     title: 'Cactus',
     rating: 4.5,
     reviews: 700,
