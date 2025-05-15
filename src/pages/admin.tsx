@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { products } from '@/data/products';
-import { AdminLogin, ProductTable, OrderTable, ProductModal } from '../components';
-import { Product, Products, Order } from '../components/Admin/types'; // Adjusted import path
+import { AdminLogin, ProductTable, OrderTable, ProductModal, AdminDashboard } from '../components';
+import { Product, Products, Order } from '../components/Admin/types';
 
 export default function AdminPanel() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -27,7 +27,19 @@ export default function AdminPanel() {
 
   useEffect(() => {
     const savedOrders = JSON.parse(localStorage.getItem('orders') || '[]');
-    setOrders(savedOrders);
+    // Ensure statusTimestamps exists for existing orders
+    const updatedOrders = savedOrders.map((order: Order) => ({
+      ...order,
+      statusTimestamps: order.statusTimestamps || {
+        pending: order.timestamp,
+        accepted: undefined,
+        delivered: undefined,
+        received: undefined,
+        rejected: undefined,
+      },
+    }));
+    setOrders(updatedOrders);
+    localStorage.setItem('orders', JSON.stringify(updatedOrders));
   }, []);
 
   useEffect(() => {
@@ -57,7 +69,7 @@ export default function AdminPanel() {
       category: formData.category,
     };
 
-    setProductData((prev: Products) => { // Explicitly typed prev
+    setProductData((prev: Products) => {
       const newData = { ...prev };
       if (editingSlug) {
         delete newData[editingSlug];
@@ -110,7 +122,7 @@ export default function AdminPanel() {
 
   const handleDelete = (slug: string) => {
     if (confirm(`Are you sure you want to delete ${productData[slug]?.title}?`)) {
-      setProductData((prev: Products) => { // Explicitly typed prev
+      setProductData((prev: Products) => {
         const newData = { ...prev };
         delete newData[slug];
         return newData;
@@ -119,25 +131,52 @@ export default function AdminPanel() {
   };
 
   const handleAcceptOrder = (orderId: string) => {
-    setOrders((prev: Order[]) => // Explicitly typed prev
+    setOrders((prev: Order[]) =>
       prev.map((order) =>
-        order.id === orderId ? { ...order, status: 'Accepted' } : order
+        order.id === orderId
+          ? {
+              ...order,
+              status: 'Accepted',
+              statusTimestamps: {
+                ...order.statusTimestamps,
+                accepted: Date.now(),
+              },
+            }
+          : order
       )
     );
   };
 
   const handleRejectOrder = (orderId: string) => {
-    setOrders((prev: Order[]) => // Explicitly typed prev
+    setOrders((prev: Order[]) =>
       prev.map((order) =>
-        order.id === orderId ? { ...order, status: 'Rejected' } : order
+        order.id === orderId
+          ? {
+              ...order,
+              status: 'Rejected',
+              statusTimestamps: {
+                ...order.statusTimestamps,
+                rejected: Date.now(),
+              },
+            }
+          : order
       )
     );
   };
 
   const handleUpdateStatus = (orderId: string, newStatus: 'Delivered' | 'Received') => {
-    setOrders((prev: Order[]) => // Explicitly typed prev
+    setOrders((prev: Order[]) =>
       prev.map((order) =>
-        order.id === orderId ? { ...order, status: newStatus } : order
+        order.id === orderId
+          ? {
+              ...order,
+              status: newStatus,
+              statusTimestamps: {
+                ...order.statusTimestamps,
+                [newStatus.toLowerCase()]: Date.now(),
+              },
+            }
+          : order
       )
     );
   };
@@ -149,6 +188,7 @@ export default function AdminPanel() {
         <AdminLogin onLogin={setIsAuthenticated} />
       ) : (
         <>
+
           <ProductTable
             products={productData}
             onEdit={handleEdit}
@@ -187,6 +227,7 @@ export default function AdminPanel() {
             formData={formData}
             setFormData={setFormData}
           />
+                    <AdminDashboard />
         </>
       )}
     </div>

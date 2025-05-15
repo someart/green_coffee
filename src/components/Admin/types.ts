@@ -16,7 +16,7 @@ export interface Product {
   
   export type Products = { [key: string]: Product };
   
-  export interface OrderItem {
+  export interface CartItem {
 	title: string;
 	price: number;
 	size: string;
@@ -27,8 +27,18 @@ export interface Product {
   
   export interface Order {
 	id: string;
-	items: OrderItem[];
+	items: CartItem[];
 	total: number;
 	status: 'Pending' | 'Accepted' | 'Delivered' | 'Received' | 'Rejected';
-	timestamp: number;
+	timestamp: number; // Original creation timestamp
+	statusTimestamps: {
+	  pending?: number;
+	  accepted?: number;
+	  delivered?: number;
+	  received?: number;
+	  rejected?: number;
+	}; // Timestamps for status changes
+	phone?: string;
+	address?: string;
+	paymentMethod?: string;
   }

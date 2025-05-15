@@ -11,3 +11,4 @@ export { AdminLogin } from './Admin/AdminLogin';
 export { OrderTable } from './Admin/OrderTable';
 export { ProductModal } from './Admin/ProductModal';
 export { ProductTable } from './Admin/ProductTable';
+export { AdminDashboard } from './Admin/AdminDashboard';
