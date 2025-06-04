@@ -117,8 +117,8 @@ export default function ProductPage() {
             ⭐ {product.rating} ({product.reviews} Reviews) | {product.sold} Sold
           </p>
           <div className="my-4">
-            <span className="text-2xl font-bold text-green-600">${product.price.toFixed(2)}</span>
-            <span className="line-through ml-2 text-gray-400">${product.oldPrice.toFixed(2)}</span>
+            <span className="text-2xl font-bold text-green-600">TND{product.price.toFixed(2)}</span>
+            <span className="line-through ml-2 text-gray-400">TND{product.oldPrice.toFixed(2)}</span>
             <span className="ml-2 text-red-500 font-semibold">{product.discount}% OFF</span>
           </div>
           <div className="mb-4">

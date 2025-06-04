@@ -72,7 +72,7 @@ export default function CartPage() {
     }
 
     const newOrder: Order = {
-      id: `ORDER-${Date.now()}`,
+      id: `ORDER-TND{Date.now()}`,
       items: cartItems,
       total: cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0),
       status: 'Pending',
@@ -128,7 +128,7 @@ export default function CartPage() {
                   <strong>{item.service}</strong>
                 </p>
                 <p className="text-green-600 font-semibold text-lg">
-                  ${(item.price * item.quantity).toFixed(2)}
+                  TND{(item.price * item.quantity).toFixed(2)}
                 </p>
                 <div className="flex items-center gap-2 mt-2">
                   <button
@@ -155,7 +155,7 @@ export default function CartPage() {
             </div>
           ))}
           <div className="bg-white rounded-lg shadow p-4 text-right font-semibold text-xl">
-            Total: $
+            Total: TND
             {cartItems
               .reduce((total, item) => total + item.price * item.quantity, 0)
               .toFixed(2)}
