@@ -25,19 +25,29 @@ export interface Product {
 	quantity: number;
   }
   
+  export interface User {
+	id: string;
+	username: string;
+	password: string; // In a real app, use hashed passwords
+	userType: 'admin' | 'user';
+	orders: string[]; // Array of order IDs
+  }
+  
   export interface Order {
 	id: string;
+	userId: string; // Link to the user who placed the order
 	items: CartItem[];
 	total: number;
-	status: 'Pending' | 'Accepted' | 'Delivered' | 'Received' | 'Rejected';
-	timestamp: number; // Original creation timestamp
+	status: 'Pending' | 'Accepted' | 'Delivered' | 'Received' | 'Rejected' | 'Archived';
+	timestamp: number;
 	statusTimestamps: {
 	  pending?: number;
 	  accepted?: number;
 	  delivered?: number;
 	  received?: number;
 	  rejected?: number;
-	}; // Timestamps for status changes
+	  archived?: number;
+	};
 	phone?: string;
 	address?: string;
 	paymentMethod?: string;
