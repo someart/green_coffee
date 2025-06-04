@@ -33,7 +33,7 @@ export function ProductCard({
         </div>
         <div className="p-4">
           <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
-          <p className="text-sm text-gray-600 font-medium">€{price}</p>
+          <p className="text-sm text-gray-600 font-medium">TND {price}</p>
           <div className="text-xs text-gray-400">
             ⭐ {rating} | {sold} sold
           </div>
