@@ -22,26 +22,54 @@ interface Order {
 export default function CartPage() {
   const router = useRouter();
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [error, setError] = useState<string | null>(null);
 
   // Load cart from localStorage on mount
   useEffect(() => {
     try {
       const storedCart = localStorage.getItem('cart');
-      console.log('Stored cart:', storedCart); // Debug
+      console.log('Raw stored cart:', storedCart);
       if (storedCart) {
-        setCartItems(JSON.parse(storedCart));
+        const parsedCart = JSON.parse(storedCart);
+        console.log('Parsed cart:', parsedCart);
+        const validCartItems = Array.isArray(parsedCart)
+          ? parsedCart.filter((item): item is CartItem => 
+              item && 
+              typeof item.title === 'string' && 
+              typeof item.price === 'number' && 
+              typeof item.size === 'string' && 
+              typeof item.service === 'string' && 
+              typeof item.image === 'string' && 
+              typeof item.quantity === 'number' && 
+              item.quantity > 0 && 
+              item.price >= 0
+            )
+          : [];
+        console.log('Validated cart items:', validCartItems);
+        if (validCartItems.length === 0 && parsedCart.length > 0) {
+          console.warn('Invalid cart data detected, resetting cart');
+          localStorage.setItem('cart', JSON.stringify([]));
+        }
+        setCartItems(validCartItems);
+      } else {
+        console.log('No cart data found in localStorage');
       }
     } catch (error) {
       console.error('Error loading cart from localStorage:', error);
+      setError('Failed to load cart. Resetting to empty.');
+      setCartItems([]);
+      localStorage.setItem('cart', JSON.stringify([]));
     }
   }, []);
 
   // Save cart to localStorage whenever it changes
   useEffect(() => {
     try {
+      console.log('Saving cart to localStorage:', cartItems);
       localStorage.setItem('cart', JSON.stringify(cartItems));
     } catch (error) {
       console.error('Error saving cart to localStorage:', error);
+      setError('Failed to save cart. Please try again.');
     }
   }, [cartItems]);
 
@@ -71,20 +99,20 @@ export default function CartPage() {
       return;
     }
 
-    const newOrder: Order = {
-      id: `ORDER-TND{Date.now()}`,
-      items: cartItems,
-      total: cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0),
-      status: 'Pending',
-      timestamp: Date.now(),
-    };
+    const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+    if (!currentUser?.id) {
+      router.push('/login');
+      return;
+    }
 
-    const existingOrders = JSON.parse(localStorage.getItem('orders') || '[]');
-    existingOrders.push(newOrder);
-    localStorage.setItem('orders', JSON.stringify(existingOrders));
-    localStorage.removeItem('cart'); // Clear cart
-    setCartItems([]); // Clear local state
-    router.push('/checkout'); // Redirect to checkout page
+    router.push('/Checkout');
+  };
+
+  const resetCart = () => {
+    setCartItems([]);
+    localStorage.setItem('cart', JSON.stringify([]));
+    setError(null);
+    console.log('Cart reset manually');
   };
 
   return (
@@ -97,6 +125,12 @@ export default function CartPage() {
           <span className="hidden sm:inline ml-1">items</span>
         </div>
       </div>
+
+      {error && (
+        <div className="bg-red-100 text-red-600 p-2 mb-4 rounded">
+          {error} <button onClick={resetCart} className="ml-2 text-blue-600 underline">Reset Cart</button>
+        </div>
+      )}
 
       {cartItems.length === 0 ? (
         <div className="bg-white rounded-lg shadow-md p-6 text-center">
@@ -117,15 +151,18 @@ export default function CartPage() {
               className="bg-white rounded-lg shadow p-4 flex gap-4"
             >
               <img
-                src={item.image}
+                src={item.image || '/images/placeholder.jpg'}
                 alt={item.title}
                 className="w-24 h-24 object-cover rounded"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = '/images/placeholder.jpg';
+                }}
               />
               <div className="flex-1">
-                <h2 className="text-lg font-semibold">{item.title}</h2>
+                <h2 className="text-lg font-semibold">{item.title || 'Unavailable'}</h2>
                 <p className="text-sm text-gray-600">
-                  Size: <strong>{item.size}</strong> | Service:{' '}
-                  <strong>{item.service}</strong>
+                  Size: <strong>{item.size || 'N/A'}</strong> | Service:{' '}
+                  <strong>{item.service || 'N/A'}</strong>
                 </p>
                 <p className="text-green-600 font-semibold text-lg">
                   TND{(item.price * item.quantity).toFixed(2)}
@@ -166,15 +203,12 @@ export default function CartPage() {
           >
             Clear Cart
           </button>
-		  <button
-			onClick={() => {
-			  handleCheckout();
-			  router.push('/checkout');
-			}}
-			className="mt-4 bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition"
-		  >
-			Checkout
-		  </button>
+          <button
+            onClick={handleCheckout}
+            className="mt-4 ml-6 bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition"
+          >
+            Checkout
+          </button>
         </div>
       )}
     </div>

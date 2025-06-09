@@ -10,19 +10,19 @@ export default function AboutPage() {
 
   const staffMembers = [
 	{
-		name: 'Youssef Ammar',
+		name: 'Maissa Mathlouthi',
 		role: 'Lead Developer',
 		description: 'Youssef built the Green Coffee website, ensuring a seamless user experience with Next.js and Tailwind CSS.',
 		image: './staff/staff1.jpg', // Placeholder image path
 	  },
 	  {
-		name: 'Fatma Cherif',
+		name: 'Wijden el hsseyni',
 		role: 'UI/UX Designer',
 		description: 'Fatma designed the intuitive and modern interface, making online ordering a delight.',
 		image: './staff/staff2.jpg', // Placeholder image path
 	  },
 	  {
-		name: 'Nour Ben Ali',
+		name: 'Zahra Ben Achour',
 		role: 'Customer Support Lead',
 		description: 'Nour ensures all user inquiries are handled promptly, keeping our community happy.',
 		image: './staff/staff3.jpg', // Placeholder image path
