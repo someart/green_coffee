@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 export default function SignupPage() {
   const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const router = useRouter();
@@ -11,14 +12,15 @@ export default function SignupPage() {
   const handleSignup = (e: React.FormEvent) => {
     e.preventDefault();
     const users = JSON.parse(localStorage.getItem('users') || '[]');
-    if (users.find((u: any) => u.username === username)) {
-      setError('Username already exists');
+    if (users.find((u: any) => u.username === username || u.email === email)) {
+      setError('Username or email already exists');
       return;
     }
 
     const newUser = {
       id: `USER-${Date.now()}`,
       username,
+      email,
       password,
       userType: 'user', // Default to user; can be changed to 'admin' for testing
       orders: [],
@@ -46,6 +48,16 @@ export default function SignupPage() {
             />
           </div>
           <div>
+            <label className="block text-sm font-medium text-gray-700">Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="mt-1 block w-full p-2 border rounded"
+              required
+            />
+          </div>
+          <div>
             <label className="block text-sm font-medium text-gray-700">Password</label>
             <input
               type="password"
@@ -66,6 +78,10 @@ export default function SignupPage() {
           Already have an account?{' '}
           <Link href="/login" className="text-blue-600 hover:underline">
             Login
+          </Link>{' '}
+          |{' '}
+          <Link href="/login" className="text-blue-600 hover:underline">
+            Forgot Password
           </Link>
         </p>
       </div>

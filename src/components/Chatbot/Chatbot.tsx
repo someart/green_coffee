@@ -41,6 +41,18 @@ export function Chatbot() {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
+  // Show welcome message when chatbot opens
+  useEffect(() => {
+    if (isOpen && messages.length === 0) {
+      setMessages([
+        {
+          sender: 'Bot',
+          text: 'Hello, how can I assist you?',
+        },
+      ]);
+    }
+  }, [isOpen]);
+
   // Close chatbot on outside click
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -60,36 +72,60 @@ export function Chatbot() {
     if (!input.trim()) return;
 
     const lowerCaseInput = input.toLowerCase();
-    // Find products where any detail matches the input
-    const matchingProducts = Object.entries(typedProducts).filter(([_, product]) =>
-      product.details.some((detail) =>
-        detail.toLowerCase().includes(lowerCaseInput)
-      )
-    );
+    let botMessages: { sender: string; text: string; product?: Product; slug?: string }[] = [];
 
-    let botMessages;
-    if (matchingProducts.length > 0) {
-      // Suggest up to three matching products
-      botMessages = matchingProducts
-        .slice(0, 3)
-        .map(([slug, product]) => ({
-          sender: 'Bot',
-          text: `I recommend our ${product.title}! Contains: ${product.details.join(', ')}.`,
-          product,
-          slug,
-        }));
+    // Handle specific keywords: "peanuts" and "chocolate"
+    if (lowerCaseInput.includes('peanuts') || lowerCaseInput.includes('chocolate')) {
+      const targetSlug = 'peanuts-milkshake';
+      const product = typedProducts[targetSlug];
+      if (product) {
+        botMessages = [
+          {
+            sender: 'Bot',
+            text: `Try our ${product.title}! A creamy milkshake with ${lowerCaseInput.includes('peanuts') ? 'rich peanut flavor' : 'delicious chocolate goodness'}.`,
+            product,
+            slug: targetSlug,
+          },
+        ];
+      } else {
+        botMessages = [
+          {
+            sender: 'Bot',
+            text: `Sorry, I couldn't find the ${lowerCaseInput} milkshake. Try something else!`,
+          },
+        ];
+      }
     } else {
-      // Fallback to default product
-      const defaultSlug = 'espresso-ice-coffee';
-      const defaultProduct = typedProducts[defaultSlug];
-      botMessages = [
-        {
-          sender: 'Bot',
-          text: `I couldn't find a match for "${input}". Try our ${defaultProduct.title} instead! Contains: ${defaultProduct.details.join(', ')}.`,
-          product: defaultProduct,
-          slug: defaultSlug,
-        },
-      ];
+      // Find products where any detail matches the input
+      const matchingProducts = Object.entries(typedProducts).filter(([_, product]) =>
+        product.details.some((detail) =>
+          detail.toLowerCase().includes(lowerCaseInput)
+        )
+      );
+
+      if (matchingProducts.length > 0) {
+        // Suggest up to three matching products
+        botMessages = matchingProducts
+          .slice(0, 3)
+          .map(([slug, product]) => ({
+            sender: 'Bot',
+            text: `I recommend our ${product.title}! Contains: ${product.details.join(', ')}.`,
+            product,
+            slug,
+          }));
+      } else {
+        // Fallback to default product
+        const defaultSlug = 'espresso-ice-coffee';
+        const defaultProduct = typedProducts[defaultSlug];
+        botMessages = [
+          {
+            sender: 'Bot',
+            text: `I couldn't find a match for "${input}". Try our ${defaultProduct.title} instead! Contains: ${defaultProduct.details.join(', ')}.`,
+            product: defaultProduct,
+            slug: defaultSlug,
+          },
+        ];
+      }
     }
 
     setMessages([...messages, { sender: 'User', text: input }, ...botMessages]);
@@ -158,7 +194,14 @@ export function Chatbot() {
                   >
                     {msg.text}
                     {msg.product && msg.slug && (
-                      <div className="mt-2">
+                      <div className="mt-2 flex items-center gap-3">
+                        <Image
+                          src={msg.product.image}
+                          alt={msg.product.title}
+                          width={50}
+                          height={50}
+                          className="rounded object-cover"
+                        />
                         <Link
                           href={`/product/${msg.slug}`}
                           className="text-amber-600 hover:text-amber-800 font-medium underline"
@@ -187,7 +230,7 @@ export function Chatbot() {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 className="border border-amber-300 rounded-lg p-3 flex-1 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400 transition"
-                placeholder="Type an ingredient (e.g., Sugar, Ice)..."
+                placeholder="Type an ingredient (e.g., Sugar, Ice, Peanuts, Chocolate)..."
               />
               <motion.button
                 whileHover={{ scale: 1.05 }}
