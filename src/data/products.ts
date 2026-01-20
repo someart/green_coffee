@@ -9,7 +9,7 @@ export const products = {
     discount: 50,
     sizes: ['S', 'M', 'L', 'XL'],
     services: ['Sent with Courier', 'Drive Thru', 'In Place'],
-    image: '/Cups/Express.png',
+    image: '/green_coffee/Cups/Express.png',
     description: 'Refreshing iced coffee espresso.',
     details: ['Water', 'Sugar', 'Beans (Arabica or Robusta)', 'Ice'],
     category: 'drink',
@@ -24,7 +24,7 @@ export const products = {
     discount: 10,
     sizes: ['Small', 'Medium', 'Large'],
     services: ['Delivered with Care', 'In-Store Pickup'],
-    image: '/Cups/Dark.png',
+    image: '/green_coffee/Cups/Dark.png',
     description:
       'A beautiful indoor plant known for its air-purifying qualities and elegant white blooms.',
     details: [
@@ -45,7 +45,7 @@ export const products = {
     discount: 10,
     sizes: ['Medium', 'Large'],
     services: ['Delivered with Care', 'In-Store Pickup'],
-    image: '/Cups/peanutsmilk.png',
+    image: '/green_coffee/Cups/peanutsmilk.png',
     description:
       'A creamy and nutty peanut milkshake, blended with fresh milk and ice cream. ',
     details: [
@@ -66,7 +66,7 @@ export const products = {
     discount: 16,
     sizes: ['Small', 'Medium'],
     services: ['Delivered with Care', 'In-Store Pickup'],
-    image: '/Cups/Latte.png',
+    image: '/green_coffee/Cups/Latte.png',
     description:
       'A low-maintenance indoor plant, perfect for sunny spots with minimal watering needs.',
     details: ['Full Sun', 'Minimal Watering', 'Well-Draining Soil'],
@@ -82,7 +82,7 @@ export const products = {
     discount: 16,
     sizes: ['Small', 'Medium'],
     services: ['Delivered with Care', 'In-Store Pickup'],
-    image: '/Cups/Pancakes.png',
+    image: '/green_coffee/Cups/Pancakes.png',
     description:
       'A low-maintenance indoor plant, perfect for sunny spots with minimal watering needs.',
     details: ['Full Sun', 'Minimal Watering', 'Well-Draining Soil'],
@@ -98,7 +98,7 @@ export const products = {
     discount: 16,
     sizes: ['Small', 'Medium'],
     services: ['Delivered with Care', 'In-Store Pickup'],
-    image: '/Cups/Blueberryshake.png',
+    image: '/green_coffee/Cups/Blueberryshake.png',
     description:
       'A low-maintenance indoor plant, perfect for sunny spots with minimal watering needs.',
     details: ['Full Sun', 'Minimal Watering', 'Well-Draining Soil'],
@@ -114,7 +114,7 @@ export const products = {
     discount: 16,
     sizes: ['Small', 'Medium'],
     services: ['Delivered with Care', 'In-Store Pickup'],
-    image: '/Cups/fruitssalade.png',
+    image: '/green_coffee/Cups/fruitssalade.png',
     description:
       'A low-maintenance indoor plant, perfect for sunny spots with minimal watering needs.',
     details: ['Full Sun', 'Minimal Watering', 'Well-Draining Soil'],
@@ -130,7 +130,7 @@ export const products = {
     discount: 16,
     sizes: ['Small', 'Medium'],
     services: ['Delivered with Care', 'In-Store Pickup'],
-    image: '/Cups/tirramissu.png',
+    image: '/green_coffee/Cups/tirramissu.png',
     description:
       'A low-maintenance indoor plant, perfect for sunny spots with minimal watering needs.',
     details: ['Full Sun', 'Minimal Watering', 'Well-Draining Soil'],
@@ -146,7 +146,7 @@ export const products = {
     discount: 16,
     sizes: ['Small', 'Medium'],
     services: ['Delivered with Care', 'In-Store Pickup'],
-    image: '/Cups/fraisejus.png',
+    image: '/green_coffee/Cups/fraisejus.png',
     description:
       'A low-maintenance indoor plant, perfect for sunny spots with minimal watering needs.',
     details: ['Full Sun', 'Minimal Watering', 'Well-Draining Soil'],
@@ -162,7 +162,7 @@ export const products = {
     discount: 16,
     sizes: ['Small', 'Medium'],
     services: ['Delivered with Care', 'In-Store Pickup'],
-    image: '/Cups/chia.png',
+    image: '/green_coffee/Cups/chia.png',
     description:
       'A low-maintenance indoor plant, perfect for sunny spots with minimal watering needs.',
     details: ['Full Sun', 'Minimal Watering', 'Well-Draining Soil'],
@@ -178,7 +178,7 @@ export const products = {
     discount: 16,
     sizes: ['Small', 'Medium'],
     services: ['Delivered with Care', 'In-Store Pickup'],
-    image: '/Cups/salade.png',
+    image: '/green_coffee/Cups/salade.png',
     description:
       'A low-maintenance indoor plant, perfect for sunny spots with minimal watering needs.',
     details: ['Full Sun', 'Minimal Watering', 'Well-Draining Soil'],
@@ -194,7 +194,7 @@ export const products = {
     discount: 16,
     sizes: ['Small', 'Medium'],
     services: ['Delivered with Care', 'In-Store Pickup'],
-    image: '/Cups/cake.png',
+    image: '/green_coffee/Cups/cake.png',
     description:
       'A low-maintenance indoor plant, perfect for sunny spots with minimal watering needs.',
     details: ['Full Sun', 'Minimal Watering', 'Well-Draining Soil'],
@@ -210,7 +210,7 @@ export const products = {
     discount: 16,
     sizes: ['Small', 'Medium'],
     services: ['Delivered with Care', 'In-Store Pickup'],
-    image: '/Cups/choclate.png',
+    image: '/green_coffee/Cups/choclate.png',
     description:
       'A low-maintenance indoor plant, perfect for sunny spots with minimal watering needs.',
     details: ['Full Sun', 'Minimal Watering', 'Well-Draining Soil'],
@@ -226,7 +226,7 @@ export const products = {
     discount: 16,
     sizes: ['Small', 'Medium'],
     services: ['Delivered with Care', 'In-Store Pickup'],
-    image: '/Cups/yaourtcup.png',
+    image: '/green_coffee/Cups/yaourtcup.png',
     description:
       'A low-maintenance indoor plant, perfect for sunny spots with minimal watering needs.',
     details: ['Full Sun', 'Minimal Watering', 'Well-Draining Soil'],
@@ -242,7 +242,7 @@ export const products = {
     discount: 16,
     sizes: ['Small', 'Medium'],
     services: ['Delivered with Care', 'In-Store Pickup'],
-    image: '/Cups/blueberryjus.png',
+    image: '/green_coffee/Cups/blueberryjus.png',
     description:
       'A low-maintenance indoor plant, perfect for sunny spots with minimal watering needs.',
     details: ['Full Sun', 'Minimal Watering', 'Well-Draining Soil'],

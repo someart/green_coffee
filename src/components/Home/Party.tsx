@@ -7,7 +7,7 @@ export function Party() {
         <div
           className="rounded-4xl px-5 py-5  my-1 mx-auto flex flex-col lg:flex-row gap-y-5 justify-center items-center"
           style={{
-            backgroundImage: "url('/BG/Party.png')", // Replace with your image path
+            backgroundImage: "url('/green_coffee/BG/Party.png')", // Replace with your image path
             backgroundSize: 'cover', // Ensure the image covers the entire section
             backgroundPosition: 'center', // Center the image
           }}

@@ -6,7 +6,7 @@ const Contact = () => {
     <section className="mb-32">
       <div className="relative h-[300px] overflow-hidden">
         <Image
-          src="/BG/Party.png"
+          src="/green_coffee/BG/Party.png"
           alt="Coffee Shop Location"
           fill
           className="object-cover"

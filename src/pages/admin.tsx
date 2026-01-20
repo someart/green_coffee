@@ -71,7 +71,7 @@ export default function AdminPanel() {
       sold: Number(formData.sold),
       sizes: formData.sizes.split(',').map((s) => s.trim()),
       services: formData.services.split(',').map((s) => s.trim()),
-      image: formData.image || '/Cups/Default.png',
+      image: formData.image || '/green_coffee/Cups/Default.png',
       description: formData.description,
       details: formData.details.split(',').map((d) => d.trim()),
       category: formData.category,

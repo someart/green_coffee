@@ -46,25 +46,25 @@ export default function ServicesPage() {
       name: 'Coffee',
       description:
         'Savor our premium Arabica and Robusta blends, freshly brewed for a perfect cup every time.',
-      image: './Services/coffee.jpg', // Placeholder image path
+      image: './green_coffee/Services/coffee.jpg', // Placeholder image path
     },
     {
       name: 'Fresh Drinks',
       description:
         'Enjoy refreshing smoothies, iced teas, and cold-pressed juices made with natural ingredients.',
-      image: './Services/drink.jpg', // Placeholder image path
+      image: './green_coffee/Services/drink.jpg', // Placeholder image path
     },
     {
       name: 'Healthy Food',
       description:
         'Indulge in nutritious salads, wraps, and bowls packed with fresh, wholesome ingredients.',
-      image: './Services/healthyy.jpg', // Placeholder image path
+      image: './green_coffee/Services/healthyy.jpg', // Placeholder image path
     },
     {
       name: 'Breakfast',
       description:
         'Start your day with hearty options like croissants, oatmeal, and breakfast sandwiches.',
-      image: './Services/breackfast.jpg', // Placeholder image path
+      image: './green_coffee/Services/breackfast.jpg', // Placeholder image path
     },
   ];
 

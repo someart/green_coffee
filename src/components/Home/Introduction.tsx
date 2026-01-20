@@ -7,7 +7,7 @@ export function Introduction() {
         <div
           className="rounded-4xl px-5 py-5  my-1 mx-auto flex flex-col lg:flex-row gap-y-5 justify-center items-center"
           style={{
-            backgroundImage: "url('/BG/Wood2.png')", // Replace with your image path
+            backgroundImage: "url('/green_coffee/BG/Wood2.png')", // Replace with your image path
             backgroundSize: 'cover', // Ensure the image covers the entire section
             backgroundPosition: 'center', // Center the image
           }}
@@ -15,7 +15,7 @@ export function Introduction() {
           {/* Left Image */}
           <div className="flex-shrink-0">
             <Image
-              src="/Logo/Logo.png" // Replace with your image path
+              src="/green_coffee/Logo/Logo.png" // Replace with your image path
               alt="Description of the image"
               width={200} // Set appropriate width
               height={200} // Set appropriate height

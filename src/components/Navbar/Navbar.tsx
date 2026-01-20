@@ -24,7 +24,7 @@ export function Navbar() {
     <nav className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-blur bg-opacity-90 backdrop-blur-lg rounded-full px-4 py-2 shadow-lg flex items-center justify-between gap-4 z-50">
       <div className="flex items-center">
         <Image
-          src="/Logo/Logo.png" // Path to your logo image, kept as is
+          src="/green_coffee/Logo/Logo.png" // Path to your logo image, kept as is
           alt="Company Logo" // Alt text for accessibility
           width={100} // Match your logo's actual width, kept as is
           height={50} // Match your logo's actual height, kept as is
