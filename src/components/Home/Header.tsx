@@ -15,7 +15,7 @@ export function Header() {
         loop
         muted
       >
-        <source src="/green_coffee/BG/Header.mp4" type="video/mp4" />
+        <source src="/green_coffee/BG/Hero.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       {/* Content Overlay */}
