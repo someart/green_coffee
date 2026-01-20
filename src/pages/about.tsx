@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function AboutPage() {
   const [isMounted, setIsMounted] = useState(false);
@@ -48,7 +49,7 @@ export default function AboutPage() {
         <section className={`bg-white p-6 rounded-xl shadow-lg mb-10 ${isMounted ? 'animate-scaleUp' : ''} transition-opacity duration-500 delay-100`}>
           <h2 className="text-2xl font-semibold mb-4">Our Story</h2>
           <p className="text-gray-700">
-            The Green Coffee website was launched in early 2024 by a small team passionate about technology and great food. Built using Next.js for fast performance and Tailwind CSS for a sleek design, our platform aims to bring convenience to coffee lovers across Tunisia. Since our launch, we've served thousands of users, offering a seamless experience from browsing to checkout, with plans to expand our features in the future.
+            The Green Coffee website was launched in early 2024 by a small team passionate about technology and great food. Built using Next.js for fast performance and Tailwind CSS for a sleek design, our platform aims to bring convenience to coffee lovers across Tunisia. Since our launch, weve served thousands of users, offering a seamless experience from browsing to checkout, with plans to expand our features in the future.
           </p>
         </section>
 
@@ -56,10 +57,10 @@ export default function AboutPage() {
         <section className={`bg-white p-6 rounded-xl shadow-lg mb-10 ${isMounted ? 'animate-scaleUp' : ''} transition-opacity duration-500 delay-200`}>
           <h2 className="text-2xl font-semibold mb-4">Meet Our Staff</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {staffMembers.map((member, index) => (
+            {staffMembers.map((member) => (
               <div key={member.name} className="text-center">
-                <div className="w-32 h-32 mx-auto mb-4 overflow-hidden rounded-full">
-                  <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+                <div className="w-32 h-32 mx-auto mb-4 overflow-hidden rounded-full relative">
+                  <Image src={member.image} alt={member.name} fill className="object-cover" />
                 </div>
                 <h3 className="text-lg font-medium">{member.name}</h3>
                 <p className="text-sm text-gray-600">{member.role}</p>

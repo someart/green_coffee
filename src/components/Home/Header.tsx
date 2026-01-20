@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 
 export function Header() {
   return (
@@ -35,13 +34,13 @@ export function Header() {
           every cup sparks joy.
         </p>
         <div className="flex flex-col md:flex-row gap-4 mt-6 justify-center">
-          <a
+          <Link
             href="/Contact"
             className=" bg-amber-950 text-white text-3xl px-6 py-2 rounded-full bg-blur bg-opacity-90 hover:bg-white hover:text-amber-950"
             style={{ fontFamily: 'Poppins' }}
           >
             Contact Us
-          </a>
+          </Link>
         </div>
       </div>
     </section>

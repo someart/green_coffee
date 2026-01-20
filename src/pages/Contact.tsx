@@ -1,13 +1,15 @@
 import React from 'react';
+import Image from 'next/image';
 
 const Contact = () => {
   return (
     <section className="mb-32">
       <div className="relative h-[300px] overflow-hidden">
-        <img
+        <Image
           src="/BG/Party.png"
           alt="Coffee Shop Location"
-          className="w-full h-full object-cover"
+          fill
+          className="object-cover"
         />
       </div>
       <div className="container px-4 sm:px-6 lg:px-12">

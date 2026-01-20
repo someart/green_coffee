@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 // Define interfaces
 interface CartItem {
@@ -166,10 +167,12 @@ export default function CheckoutPage() {
           <div className="space-y-4 mb-6">
             {cartItems.map((item, index) => (
               <div key={index} className="flex items-center gap-4 p-2 border-b">
-                <img
+                <Image
                   src={item.image || '/images/placeholder.jpg'}
                   alt={item.title}
-                  className="w-16 h-16 object-cover rounded"
+                  width={64}
+                  height={64}
+                  className="object-cover rounded"
                   onError={(e) => {
                     (e.target as HTMLImageElement).src = '/images/placeholder.jpg';
                   }}

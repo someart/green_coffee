@@ -51,7 +51,7 @@ export function Chatbot() {
         },
       ]);
     }
-  }, [isOpen]);
+  }, [isOpen, messages.length]);
 
   // Close chatbot on outside click
   useEffect(() => {
@@ -97,7 +97,7 @@ export function Chatbot() {
       }
     } else {
       // Find products where any detail matches the input
-      const matchingProducts = Object.entries(typedProducts).filter(([_, product]) =>
+      const matchingProducts = Object.entries(typedProducts).filter(([, product]) =>
         product.details.some((detail) =>
           detail.toLowerCase().includes(lowerCaseInput)
         )

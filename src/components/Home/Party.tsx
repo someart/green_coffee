@@ -1,4 +1,4 @@
-import Image from 'next/image'; // Import Image from Next.js
+import Link from 'next/link';
 
 export function Party() {
   return (
@@ -30,12 +30,12 @@ export function Party() {
           </div>
           {/* Store Button */}
           <div className="text-center p-4 my-4">
-            <a
+            <Link
               href="/Store"
               className="btn btn-primary bg-black p-4  rounded-4xl text-white"
             >
               Book Now
-            </a>
+            </Link>
           </div>
         </div>
       </section>

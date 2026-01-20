@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 
 const products = [
@@ -125,7 +126,7 @@ export const Carousel: React.FC = () => {
             {products.map((product, index) => (
               <div
                 key={index}
-                className="owl-item flex-shrink-0  sm:1/2 md:w-1/4 lg:w-1/4 xl:w-1/4 "
+                className="owl-item shrink-0  sm:1/2 md:w-1/4 lg:w-1/4 xl:w-1/4 "
               >
                 <a href="#" className="d-block product-item rounded">
                   <Image
@@ -166,12 +167,12 @@ export const Carousel: React.FC = () => {
         </div>
         {/* Store Button */}
         <div className="text-center p-4 my-4">
-          <a
+          <Link
             href="/Store"
             className="btn btn-primary bg-black p-4  rounded-4xl text-white"
           >
             Go to Our Store
-          </a>
+          </Link>
         </div>
       </div>
     </div>

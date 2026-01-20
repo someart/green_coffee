@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
+import Image from 'next/image';
 import { FaShoppingCart, FaTrash, FaPlus, FaMinus } from 'react-icons/fa';
 
 interface CartItem {
@@ -9,14 +11,6 @@ interface CartItem {
   service: string;
   image: string;
   quantity: number;
-}
-
-interface Order {
-  id: string;
-  items: CartItem[];
-  total: number;
-  status: 'Pending';
-  timestamp: number;
 }
 
 export default function CartPage() {
@@ -136,12 +130,12 @@ export default function CartPage() {
         <div className="bg-white rounded-lg shadow-md p-6 text-center">
           <FaShoppingCart className="text-gray-300 text-5xl mb-4 mx-auto" />
           <p className="text-xl text-gray-500">Your cart is empty</p>
-          <a
+          <Link
             href="/product/espresso-ice-coffee"
             className="inline-block mt-4 bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition"
           >
             Continue Shopping
-          </a>
+          </Link>
         </div>
       ) : (
         <div className="space-y-4">
@@ -150,9 +144,11 @@ export default function CartPage() {
               key={index}
               className="bg-white rounded-lg shadow p-4 flex gap-4"
             >
-              <img
+              <Image
                 src={item.image || '/images/placeholder.jpg'}
                 alt={item.title}
+                width={96}
+                height={96}
                 className="w-24 h-24 object-cover rounded"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src = '/images/placeholder.jpg';

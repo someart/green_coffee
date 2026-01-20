@@ -16,7 +16,7 @@ export default function Store() {
       sold: product.sold,
       image: product.image,
     }));
-  }, [products]);
+  }, []);
 
   const handleDrinkFilter = (drink: string) => {
     setSelectedDrinks((prev) =>

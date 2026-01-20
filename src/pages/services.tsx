@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 // Define interfaces for TypeScript
 interface Service {
@@ -19,8 +20,8 @@ const ServiceCard = ({ name, description, image, index }: ServiceCardProps) => (
   <div
     className={`bg-white p-6 rounded-xl shadow-lg flex flex-col items-center text-center ${index !== undefined ? 'animate-scaleUp' : ''} transition-opacity duration-500 delay-${(index ?? 0) * 100} hover:bg-amber-300 transition-colors duration-300`}
   >
-    <div className="w-40 h-50 mb-4 overflow-hidden rounded">
-      <img src={image} alt={name} className="w-full h-full object-cover" />
+    <div className="w-40 h-50 mb-4 overflow-hidden rounded relative">
+      <Image src={image} alt={name} className="w-full h-full object-cover" fill sizes="160px" />
     </div>
     <h2 className="text-xl font-semibold mb-2 text-amber-800">{name}</h2>
     <p className="text-gray-600">{description}</p>
@@ -116,7 +117,7 @@ export default function ServicesPage() {
         <section className={`bg-white p-6 rounded-xl shadow-lg mt-10 mb-10 ${isMounted ? 'animate-scaleUp' : ''} transition-opacity duration-500 delay-500`}>
           <h2 className="text-2xl font-semibold mb-6 text-center text-amber-800">Why Choose Our Menu</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {whyChooseUsBenefits.map((benefit, index) => (
+            {whyChooseUsBenefits.map((benefit) => (
               <div key={benefit.title} className="flex flex-col items-center text-center">
                 <div className="mb-2">{benefit.icon}</div>
                 <h3 className="text-lg font-medium mb-2">{benefit.title}</h3>
@@ -130,7 +131,7 @@ export default function ServicesPage() {
         <section className={`bg-white p-6 rounded-xl shadow-lg mb-10 ${isMounted ? 'animate-scaleUp' : ''} transition-opacity duration-500 delay-600`}>
           <h2 className="text-2xl font-semibold mb-6 text-center text-amber-800">Special Deals</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {specialDeals.map((deal, index) => (
+            {specialDeals.map((deal) => (
               <div key={deal.name} className="bg-amber-50 p-4 rounded-lg">
                 <h3 className="text-lg font-medium mb-2 text-amber-800">{deal.name}</h3>
                 <p className="text-gray-600 mb-2">{deal.description}</p>

@@ -2,6 +2,15 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
+interface User {
+  id: string;
+  username: string;
+  email: string;
+  password: string;
+  userType: string;
+  orders: string[];
+}
+
 export default function SignupPage() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -11,8 +20,8 @@ export default function SignupPage() {
 
   const handleSignup = (e: React.FormEvent) => {
     e.preventDefault();
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
-    if (users.find((u: any) => u.username === username || u.email === email)) {
+    const users: User[] = JSON.parse(localStorage.getItem('users') || '[]');
+    if (users.find((u: User) => u.username === username || u.email === email)) {
       setError('Username or email already exists');
       return;
     }
