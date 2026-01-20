@@ -158,7 +158,7 @@ export default function CartPage() {
                 className="w-24 h-24 object-cover rounded"
                 onError={(e) => {
                   (e.target as HTMLImageElement).src =
-                    '/images/placeholder.jpg';
+                    '/green_coffee/images/placeholder.jpg';
                 }}
               />
               <div className="flex-1">
