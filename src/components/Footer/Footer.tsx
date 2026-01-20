@@ -9,7 +9,7 @@ export function Footer() {
         <div className="py-12 flex flex-col items-center gap-8 lg:flex-row lg:justify-between">
           <div className="flex flex-col items-center">
             <Image
-              src="/Logo/Logo.png" // Path to your logo image
+              src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/Logo/Logo.png`} // Path to your logo image
               alt="Brand Logo"
               className="h-40 w-auto" // Increased height for a bigger logo
               width={100} // Increased width for a bigger logo

@@ -1,0 +1,48 @@
+yarn run v1.22.22
+$ next build
+   ▲ Next.js 15.2.3
+
+   Skipping linting
+   Checking validity of types ...
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Collecting page data ...
+   Generating static pages (0/15) ...
+cartItemscartItemscartItems []
+   Generating static pages (3/15) 
+   Generating static pages (7/15) 
+   Generating static pages (11/15) 
+ ✓ Generating static pages (15/15)
+   Finalizing page optimization ...
+   Collecting build traces ...
+   Exporting (0/15) ...
+   Exporting (3/15) 
+   Exporting (7/15) 
+   Exporting (11/15) 
+ ✓ Exporting (15/15)
+
+Route (pages)                                 Size  First Load JS
+┌ ○ / (442 ms)                               374 B         211 kB
+├   /_app                                      0 B         211 kB
+├ ○ /404                                   1.28 kB         212 kB
+├ ○ /about (442 ms)                        1.76 kB         213 kB
+├ ○ /admin                                 1.33 kB         212 kB
+├ ○ /Cart (441 ms)                         3.45 kB         214 kB
+├ ○ /Checkout (440 ms)                     1.85 kB         213 kB
+├ ○ /CommingSoon (440 ms)                    669 B         212 kB
+├ ○ /Contact (443 ms)                      1.27 kB         212 kB
+├ ○ /login                                 1.02 kB         212 kB
+├ ○ /product/[slug]                        1.53 kB         212 kB
+├ ○ /profile (440 ms)                      1.26 kB         212 kB
+├ ○ /services                              1.85 kB         213 kB
+├ ○ /signup                                1.03 kB         212 kB
+└ ○ /Store (442 ms)                          828 B         212 kB
++ First Load JS shared by all               218 kB
+  ├ chunks/framework-84d6ee64cdf12741.js   57.7 kB
+  ├ chunks/main-8e7c22d5d867f374.js          32 kB
+  ├ chunks/pages/_app-792cccd3acf52489.js   119 kB
+  └ other shared chunks (total)             8.7 kB
+
+○  (Static)  prerendered as static content
+
+Done in 21.53s.

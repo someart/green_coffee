@@ -185,7 +185,7 @@ export function Chatbot() {
                     <span className="relative flex shrink-0 overflow-hidden rounded-full w-8 h-8">
                       <div className="rounded-full bg-gray-100 border p-1">
                         <Image
-                          src="/Logo/Logo.png"
+                          src={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/Logo/Logo.png`}
                           alt="Green Cafe Logo"
                           width={20}
                           height={20}
