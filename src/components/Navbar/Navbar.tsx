@@ -2,11 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 
-// Define User interface (simplified)
-interface User {
-  id: string;
-  orders?: string[];
-}
+// Remove unused User interface
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
