@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 interface Product {
   title: string;
   rating: number;

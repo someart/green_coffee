@@ -1,20 +1,3 @@
-import { useState } from 'react';
-
-interface Product {
-  title: string;
-  rating: number;
-  reviews: number;
-  sold: number;
-  price: number;
-  oldPrice: number;
-  discount: number;
-  sizes: string[];
-  services: string[];
-  image: string;
-  description: string;
-  details: string[];
-  category: string;
-}
 
 interface ProductModalProps {
   isOpen: boolean;
@@ -36,7 +19,7 @@ interface ProductModalProps {
     details: string;
     category: string;
   };
-  setFormData: (data: any) => void;
+  setFormData: (data: ProductModalProps['formData']) => void;
 }
 
 export function ProductModal({
