@@ -3,7 +3,9 @@ import { Order, CartItem } from './types'; // Adjusted import path based on stru
 import Chart from 'chart.js/auto'; // Static import for Chart.js
 
 export function AdminDashboard() {
-  const [productTotals, setProductTotals] = useState<{ [key: string]: number }>({});
+  const [productTotals, setProductTotals] = useState<{ [key: string]: number }>(
+    {}
+  );
   const [totalIncome, setTotalIncome] = useState(0);
   const productChartRef = useRef<HTMLCanvasElement>(null);
   const incomeChartRef = useRef<HTMLCanvasElement>(null);
@@ -20,7 +22,8 @@ export function AdminDashboard() {
     orders.forEach((order: Order) => {
       order.items.forEach((item: CartItem) => {
         const productKey = `${item.title} (Size: ${item.size}, Service: ${item.service})`;
-        totals[productKey] = (totals[productKey] || 0) + item.price * item.quantity;
+        totals[productKey] =
+          (totals[productKey] || 0) + item.price * item.quantity;
       });
       income += order.total;
     });
@@ -34,21 +37,23 @@ export function AdminDashboard() {
         type: 'bar',
         data: {
           labels: Object.keys(totals),
-          datasets: [{
-            label: 'Total Payment ($)',
-            data: Object.values(totals),
-            backgroundColor: 'rgba(75, 192, 192, 0.6)',
-            borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 1
-          }]
+          datasets: [
+            {
+              label: 'Total Payment ($)',
+              data: Object.values(totals),
+              backgroundColor: 'rgba(75, 192, 192, 0.6)',
+              borderColor: 'rgba(75, 192, 192, 1)',
+              borderWidth: 1,
+            },
+          ],
         },
         options: {
           scales: {
             y: {
-              beginAtZero: true
-            }
-          }
-        }
+              beginAtZero: true,
+            },
+          },
+        },
       });
     }
 
@@ -57,31 +62,33 @@ export function AdminDashboard() {
         type: 'bar',
         data: {
           labels: ['Total Income'],
-          datasets: [{
-            data: [income],
-            backgroundColor: ['rgba(54, 162, 235, 0.6)']
-          }]
+          datasets: [
+            {
+              data: [income],
+              backgroundColor: ['rgba(54, 162, 235, 0.6)'],
+            },
+          ],
         },
-      options: {
-        plugins: {
-          legend: {
-            position: 'top'
+        options: {
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: 'Total Income ($)',
+            },
           },
-          title: {
-            display: true,
-            text: 'Total Income ($)'
-          }
+          scales: {
+            x: {
+              stacked: true,
+            },
+            y: {
+              stacked: true,
+              beginAtZero: true,
+            },
+          },
         },
-        scales: {
-          x: {
-            stacked: true
-          },
-          y: {
-            stacked: true,
-            beginAtZero: true
-          }
-        }
-      }
       });
     }
 

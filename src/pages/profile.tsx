@@ -20,7 +20,9 @@ export default function ProfilePage() {
   const router = useRouter();
 
   useEffect(() => {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+    const currentUser = JSON.parse(
+      localStorage.getItem('currentUser') || 'null'
+    );
     if (!currentUser) {
       router.push('/login');
       return;
@@ -30,7 +32,9 @@ export default function ProfilePage() {
     setPhone(currentUser.phone || '');
 
     const allOrders = JSON.parse(localStorage.getItem('orders') || '[]');
-    setOrders(allOrders.filter((order: Order) => order.userId === currentUser.id));
+    setOrders(
+      allOrders.filter((order: Order) => order.userId === currentUser.id)
+    );
   }, [router]);
 
   const handleSave = () => {
@@ -52,7 +56,9 @@ export default function ProfilePage() {
       <h1 className="text-2xl font-bold mb-6">Profile</h1>
       {user ? (
         <div className="bg-white p-6 rounded-xl shadow">
-          <h2 className="text-xl font-semibold mb-4">Welcome, {user.username || 'User'}!</h2>
+          <h2 className="text-xl font-semibold mb-4">
+            Welcome, {user.username || 'User'}!
+          </h2>
 
           <div className="mt-4">
             <p className="font-medium">Location: {location || 'Not set'}</p>
@@ -125,7 +131,9 @@ export default function ProfilePage() {
                       <td className="p-3">{order.id}</td>
                       <td className="p-3">
                         {order.items.map((item) => (
-                          <div key={item.title}>{item.title} (x{item.quantity})</div>
+                          <div key={item.title}>
+                            {item.title} (x{item.quantity})
+                          </div>
                         ))}
                       </td>
                       <td className="p-3">${order.total.toFixed(2)}</td>

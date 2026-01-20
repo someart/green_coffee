@@ -25,7 +25,12 @@ interface ProductTableProps {
   onAddProduct: () => void;
 }
 
-export  function ProductTable({ products, onEdit, onDelete, onAddProduct }: ProductTableProps) {
+export function ProductTable({
+  products,
+  onEdit,
+  onDelete,
+  onAddProduct,
+}: ProductTableProps) {
   return (
     <div className="mb-10">
       <h2 className="text-xl font-semibold mb-4">Manage Products</h2>

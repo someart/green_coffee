@@ -86,7 +86,7 @@ export function Navbar() {
           <Link
             href="/profile"
             className="nav-item px-3 py-2 rounded-full hover:bg-amber-700 text-gray-800 font-bold transition"
-            >
+          >
             Profile
           </Link>
         )}

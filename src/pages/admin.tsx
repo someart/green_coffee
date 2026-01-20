@@ -1,6 +1,12 @@
 import { useState, useEffect } from 'react';
 import { products } from '@/data/products';
-import { AdminLogin, ProductTable, OrderTable, ProductModal, AdminDashboard } from '../components';
+import {
+  AdminLogin,
+  ProductTable,
+  OrderTable,
+  ProductModal,
+  AdminDashboard,
+} from '../components';
 import { Product, Products, Order } from '../components/Admin/types';
 
 export default function AdminPanel() {
@@ -52,7 +58,9 @@ export default function AdminPanel() {
       return;
     }
 
-    const slug = formData.title.toLowerCase().replace(/\s+/g, '-') + (editingSlug ? `-${editingSlug.split('-').pop()}` : '');
+    const slug =
+      formData.title.toLowerCase().replace(/\s+/g, '-') +
+      (editingSlug ? `-${editingSlug.split('-').pop()}` : '');
     const updatedProduct: Product = {
       title: formData.title,
       price: Number(formData.price),
@@ -121,7 +129,9 @@ export default function AdminPanel() {
   };
 
   const handleDelete = (slug: string) => {
-    if (confirm(`Are you sure you want to delete ${productData[slug]?.title}?`)) {
+    if (
+      confirm(`Are you sure you want to delete ${productData[slug]?.title}?`)
+    ) {
       setProductData((prev: Products) => {
         const newData = { ...prev };
         delete newData[slug];
@@ -164,7 +174,10 @@ export default function AdminPanel() {
     );
   };
 
-  const handleUpdateStatus = (orderId: string, newStatus: 'Delivered' | 'Received') => {
+  const handleUpdateStatus = (
+    orderId: string,
+    newStatus: 'Delivered' | 'Received'
+  ) => {
     setOrders((prev: Order[]) =>
       prev.map((order) =>
         order.id === orderId
@@ -188,7 +201,6 @@ export default function AdminPanel() {
         <AdminLogin onLogin={setIsAuthenticated} />
       ) : (
         <>
-
           <ProductTable
             products={productData}
             onEdit={handleEdit}
@@ -227,7 +239,7 @@ export default function AdminPanel() {
             formData={formData}
             setFormData={setFormData}
           />
-                    <AdminDashboard />
+          <AdminDashboard />
         </>
       )}
     </div>

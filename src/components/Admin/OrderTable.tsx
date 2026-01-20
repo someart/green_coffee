@@ -4,10 +4,18 @@ interface OrderTableProps {
   orders: Order[];
   onAcceptOrder: (orderId: string) => void;
   onRejectOrder: (orderId: string) => void;
-  onUpdateStatus: (orderId: string, newStatus: 'Delivered' | 'Received') => void;
+  onUpdateStatus: (
+    orderId: string,
+    newStatus: 'Delivered' | 'Received'
+  ) => void;
 }
 
-export  function OrderTable({ orders, onAcceptOrder, onRejectOrder, onUpdateStatus }: OrderTableProps) {
+export function OrderTable({
+  orders,
+  onAcceptOrder,
+  onRejectOrder,
+  onUpdateStatus,
+}: OrderTableProps) {
   return (
     <div>
       <h2 className="text-xl font-semibold mb-4">Manage Orders</h2>
@@ -28,7 +36,9 @@ export  function OrderTable({ orders, onAcceptOrder, onRejectOrder, onUpdateStat
                 <td className="p-3">{order.id}</td>
                 <td className="p-3">
                   {order.items.map((item) => (
-                    <div key={item.title}>{item.title} (x{item.quantity})</div>
+                    <div key={item.title}>
+                      {item.title} (x{item.quantity})
+                    </div>
                   ))}
                 </td>
                 <td className="p-3">${order.total.toFixed(2)}</td>

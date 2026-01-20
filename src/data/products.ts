@@ -56,7 +56,7 @@ export const products = {
     category: 'Outdoor',
   },
 
-  'cactus': {
+  cactus: {
     title: 'Cactus',
     rating: 4.5,
     reviews: 700,
@@ -72,7 +72,7 @@ export const products = {
     details: ['Full Sun', 'Minimal Watering', 'Well-Draining Soil'],
     category: 'Indoor',
   },
-  'pancakes': {
+  pancakes: {
     title: 'Pancakes',
     rating: 4.5,
     reviews: 700,
@@ -120,7 +120,7 @@ export const products = {
     details: ['Full Sun', 'Minimal Watering', 'Well-Draining Soil'],
     category: 'Indoor',
   },
-  'tirramissu': {
+  tirramissu: {
     title: 'tirramissu',
     rating: 4.5,
     reviews: 700,
@@ -168,7 +168,7 @@ export const products = {
     details: ['Full Sun', 'Minimal Watering', 'Well-Draining Soil'],
     category: 'Indoor',
   },
-  'salade': {
+  salade: {
     title: 'salade',
     rating: 4.5,
     reviews: 700,
@@ -184,7 +184,7 @@ export const products = {
     details: ['Full Sun', 'Minimal Watering', 'Well-Draining Soil'],
     category: 'Indoor',
   },
-  'cake': {
+  cake: {
     title: 'cake',
     rating: 4.5,
     reviews: 700,

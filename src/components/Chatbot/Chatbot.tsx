@@ -72,10 +72,18 @@ export function Chatbot() {
     if (!input.trim()) return;
 
     const lowerCaseInput = input.toLowerCase();
-    let botMessages: { sender: string; text: string; product?: Product; slug?: string }[] = [];
+    let botMessages: {
+      sender: string;
+      text: string;
+      product?: Product;
+      slug?: string;
+    }[] = [];
 
     // Handle specific keywords: "peanuts" and "chocolate"
-    if (lowerCaseInput.includes('peanuts') || lowerCaseInput.includes('chocolate')) {
+    if (
+      lowerCaseInput.includes('peanuts') ||
+      lowerCaseInput.includes('chocolate')
+    ) {
       const targetSlug = 'peanuts-milkshake';
       const product = typedProducts[targetSlug];
       if (product) {
@@ -97,22 +105,21 @@ export function Chatbot() {
       }
     } else {
       // Find products where any detail matches the input
-      const matchingProducts = Object.entries(typedProducts).filter(([, product]) =>
-        product.details.some((detail) =>
-          detail.toLowerCase().includes(lowerCaseInput)
-        )
+      const matchingProducts = Object.entries(typedProducts).filter(
+        ([, product]) =>
+          product.details.some((detail) =>
+            detail.toLowerCase().includes(lowerCaseInput)
+          )
       );
 
       if (matchingProducts.length > 0) {
         // Suggest up to three matching products
-        botMessages = matchingProducts
-          .slice(0, 3)
-          .map(([slug, product]) => ({
-            sender: 'Bot',
-            text: `I recommend our ${product.title}! Contains: ${product.details.join(', ')}.`,
-            product,
-            slug,
-          }));
+        botMessages = matchingProducts.slice(0, 3).map(([slug, product]) => ({
+          sender: 'Bot',
+          text: `I recommend our ${product.title}! Contains: ${product.details.join(', ')}.`,
+          product,
+          slug,
+        }));
       } else {
         // Fallback to default product
         const defaultSlug = 'espresso-ice-coffee';
@@ -157,7 +164,9 @@ export function Chatbot() {
                   ✕
                 </button>
               </div>
-              <p className="text-sm text-gray-500">Your friendly coffee companion</p>
+              <p className="text-sm text-gray-500">
+                Your friendly coffee companion
+              </p>
             </div>
 
             {/* Messages */}

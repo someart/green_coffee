@@ -72,7 +72,7 @@ export default function ProductPage() {
       setCart(currentCart); // Update local state
       alert('Added to cart!');
       // Optionally redirect to cart page after adding
-       router.push('/cart');
+      router.push('/cart');
     } catch (error) {
       console.error('Error saving to localStorage:', error);
       alert('Failed to add to cart. Please try again.');
@@ -114,12 +114,19 @@ export default function ProductPage() {
         <div>
           <h1 className="text-2xl font-bold mb-2">{product.title}</h1>
           <p className="text-sm text-gray-600">
-            ⭐ {product.rating} ({product.reviews} Reviews) | {product.sold} Sold
+            ⭐ {product.rating} ({product.reviews} Reviews) | {product.sold}{' '}
+            Sold
           </p>
           <div className="my-4">
-            <span className="text-2xl font-bold text-green-600">TND{product.price.toFixed(2)}</span>
-            <span className="line-through ml-2 text-gray-400">TND{product.oldPrice.toFixed(2)}</span>
-            <span className="ml-2 text-red-500 font-semibold">{product.discount}% OFF</span>
+            <span className="text-2xl font-bold text-green-600">
+              TND{product.price.toFixed(2)}
+            </span>
+            <span className="line-through ml-2 text-gray-400">
+              TND{product.oldPrice.toFixed(2)}
+            </span>
+            <span className="ml-2 text-red-500 font-semibold">
+              {product.discount}% OFF
+            </span>
           </div>
           <div className="mb-4">
             <h3 className="font-medium mb-1">Size</h3>
@@ -129,7 +136,9 @@ export default function ProductPage() {
                   key={size}
                   onClick={() => setSelectedSize(size)}
                   className={`px-3 py-1 border rounded text-sm ${
-                    selectedSize === size ? 'bg-black text-white' : 'hover:bg-gray-100'
+                    selectedSize === size
+                      ? 'bg-black text-white'
+                      : 'hover:bg-gray-100'
                   }`}
                 >
                   {size}
@@ -145,7 +154,9 @@ export default function ProductPage() {
                   key={service}
                   onClick={() => setSelectedService(service)}
                   className={`px-3 py-1 border rounded text-sm ${
-                    selectedService === service ? 'bg-black text-white' : 'hover:bg-gray-100'
+                    selectedService === service
+                      ? 'bg-black text-white'
+                      : 'hover:bg-gray-100'
                   }`}
                 >
                   {service}

@@ -27,16 +27,17 @@ export default function CartPage() {
         const parsedCart = JSON.parse(storedCart);
         console.log('Parsed cart:', parsedCart);
         const validCartItems = Array.isArray(parsedCart)
-          ? parsedCart.filter((item): item is CartItem => 
-              item && 
-              typeof item.title === 'string' && 
-              typeof item.price === 'number' && 
-              typeof item.size === 'string' && 
-              typeof item.service === 'string' && 
-              typeof item.image === 'string' && 
-              typeof item.quantity === 'number' && 
-              item.quantity > 0 && 
-              item.price >= 0
+          ? parsedCart.filter(
+              (item): item is CartItem =>
+                item &&
+                typeof item.title === 'string' &&
+                typeof item.price === 'number' &&
+                typeof item.size === 'string' &&
+                typeof item.service === 'string' &&
+                typeof item.image === 'string' &&
+                typeof item.quantity === 'number' &&
+                item.quantity > 0 &&
+                item.price >= 0
             )
           : [];
         console.log('Validated cart items:', validCartItems);
@@ -93,7 +94,9 @@ export default function CartPage() {
       return;
     }
 
-    const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+    const currentUser = JSON.parse(
+      localStorage.getItem('currentUser') || 'null'
+    );
     if (!currentUser?.id) {
       router.push('/login');
       return;
@@ -122,7 +125,10 @@ export default function CartPage() {
 
       {error && (
         <div className="bg-red-100 text-red-600 p-2 mb-4 rounded">
-          {error} <button onClick={resetCart} className="ml-2 text-blue-600 underline">Reset Cart</button>
+          {error}{' '}
+          <button onClick={resetCart} className="ml-2 text-blue-600 underline">
+            Reset Cart
+          </button>
         </div>
       )}
 
@@ -151,11 +157,14 @@ export default function CartPage() {
                 height={96}
                 className="w-24 h-24 object-cover rounded"
                 onError={(e) => {
-                  (e.target as HTMLImageElement).src = '/images/placeholder.jpg';
+                  (e.target as HTMLImageElement).src =
+                    '/images/placeholder.jpg';
                 }}
               />
               <div className="flex-1">
-                <h2 className="text-lg font-semibold">{item.title || 'Unavailable'}</h2>
+                <h2 className="text-lg font-semibold">
+                  {item.title || 'Unavailable'}
+                </h2>
                 <p className="text-sm text-gray-600">
                   Size: <strong>{item.size || 'N/A'}</strong> | Service:{' '}
                   <strong>{item.service || 'N/A'}</strong>

@@ -45,7 +45,9 @@ export default function CheckoutPage() {
 
   useEffect(() => {
     if (typeof window === 'undefined') return; // Prevent SSR issues
-    const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null') as User | null;
+    const currentUser = JSON.parse(
+      localStorage.getItem('currentUser') || 'null'
+    ) as User | null;
     if (!currentUser?.id) {
       setError('Please log in to complete your payment.');
       router.push('/login');
@@ -72,7 +74,9 @@ export default function CheckoutPage() {
 
   const handlePayment = async () => {
     if (typeof window === 'undefined') return; // Prevent SSR issues
-    const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null') as User | null;
+    const currentUser = JSON.parse(
+      localStorage.getItem('currentUser') || 'null'
+    ) as User | null;
     if (!currentUser?.id) {
       setError('User not logged in. Please log in to proceed.');
       return;
@@ -88,7 +92,11 @@ export default function CheckoutPage() {
 
     try {
       // Simulate payment processing
-      if (!paymentDetails.cardNumber || !paymentDetails.expiryDate || !paymentDetails.cvv) {
+      if (
+        !paymentDetails.cardNumber ||
+        !paymentDetails.expiryDate ||
+        !paymentDetails.cvv
+      ) {
         throw new Error('Please fill in all payment details.');
       }
 
@@ -96,7 +104,10 @@ export default function CheckoutPage() {
         id: `ORDER-${Date.now()}`,
         userId: currentUser.id,
         items: cartItems,
-        total: cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0),
+        total: cartItems.reduce(
+          (sum, item) => sum + item.price * item.quantity,
+          0
+        ),
         status: 'Completed',
         timestamp: Date.now(),
         statusTimestamps: { completed: Date.now() },
@@ -174,20 +185,27 @@ export default function CheckoutPage() {
                   height={64}
                   className="object-cover rounded"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = '/images/placeholder.jpg';
+                    (e.target as HTMLImageElement).src =
+                      '/images/placeholder.jpg';
                   }}
                 />
                 <div>
                   <h3 className="font-medium">{item.title || 'Unavailable'}</h3>
                   <p className="text-sm text-gray-600">
-                    Size: {item.size || 'N/A'} | Service: {item.service || 'N/A'}
+                    Size: {item.size || 'N/A'} | Service:{' '}
+                    {item.service || 'N/A'}
                   </p>
-                  <p className="text-green-600">TND{(item.price * item.quantity).toFixed(2)}</p>
+                  <p className="text-green-600">
+                    TND{(item.price * item.quantity).toFixed(2)}
+                  </p>
                 </div>
               </div>
             ))}
             <div className="text-right font-semibold text-xl">
-              Total: TND{cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2)}
+              Total: TND
+              {cartItems
+                .reduce((sum, item) => sum + item.price * item.quantity, 0)
+                .toFixed(2)}
             </div>
           </div>
 
